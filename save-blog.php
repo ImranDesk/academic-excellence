@@ -1,34 +1,22 @@
 <?php
 include 'db.php';
 
-$title = $_POST['title'];
-$author = $_POST['author'];
-$content = $_POST['content'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = $_POST['title'];
+    $author = $_POST['author'];
+    $content = $_POST['content'];
 
-// Handle image upload
-$imagePath = '';
-if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-    $uploadDir = 'uploads/';
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-    }
+    // Handle Image Upload
+    $image = $_FILES['image'];
+    $imageName = time() . '_' . basename($image['name']);
+    $imagePath = 'uploads/' . $imageName;
 
-    $imageName = time() . '_' . basename($_FILES['image']['name']);
-    $targetPath = $uploadDir . $imageName;
-
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
-        $imagePath = $targetPath;
+    if (move_uploaded_file($image['tmp_name'], $imagePath)) {
+        $stmt = $pdo->prepare("INSERT INTO blogs (title, author, content, image) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$title, $author, $content, $imagePath]);
+        echo "Blog posted successfully!";
     } else {
-        die("Image upload failed.");
+        echo "Image upload failed.";
     }
-} else {
-    die("Image is required.");
 }
-
-// Insert into database
-$sql = "INSERT INTO blogs (title, image_path, content, author) VALUES (?, ?, ?, ?)";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$title, $imagePath, $content, $author]);
-
-echo "Blog published successfully. <a href='add-blog.php'>Add another</a>";
 ?>
