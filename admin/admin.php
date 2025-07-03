@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: auth-login-basic.html");
+    exit();
+}
+
+
+
 include '../db.php';
 $stmt = $pdo->query("SELECT * FROM blogs ORDER BY created_at DESC");
 $blogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -279,7 +288,7 @@ $blogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item" href="logout.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
