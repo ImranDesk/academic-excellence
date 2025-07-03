@@ -80,7 +80,9 @@ $recentBlogs = $recentStmt->fetchAll(PDO::FETCH_ASSOC);
                                 <h2><?= htmlspecialchars($blog['title']) ?></h2>
                                 <p><strong>By <?= htmlspecialchars($blog['author'] ?? 'Unknown') ?> on <?= date('F j, Y', strtotime($blog['created_at'])) ?></strong></p>
                                 <p><?= nl2br(htmlspecialchars(substr($blog['content'], 0, 300))) ?>...</p>
-                                <a href="#" class="btn btn-primary">Read More</a>
+                                <!-- <a href="#" class="btn btn-primary">Read More</a> -->
+                                 <a href="blog-details.php?id=<?= $blog['id'] ?>" class="btn btn-primary">Read More</a>
+
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
