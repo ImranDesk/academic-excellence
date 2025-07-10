@@ -1,6 +1,6 @@
 <?php
 include 'db.php';
-include 'topbar.php';
+
 include 'navbar.php';
 
 // Handle search
