@@ -46,12 +46,7 @@ $recentBlogs = $recentStmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
             <form method="GET" action="">
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control border-light" style="padding: 30px 25px;" placeholder="Search blogs by keyword..." value="<?= htmlspecialchars($search) ?>">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary px-4 px-lg-5">Search</button>
-                    </div>
-                </div>
+                
             </form>
         </div>
     </div>

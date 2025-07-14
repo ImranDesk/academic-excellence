@@ -106,7 +106,7 @@
 
               <p class="text-center">
                 <span>New on our platform?</span>
-                <a href="signup.html">
+                <a href="signup.php">
                   <span>Create an account</span>
                 </a>
               </p>

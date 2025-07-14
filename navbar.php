@@ -13,12 +13,12 @@
                 <a href="about.php" class="nav-item nav-link">About</a>
                 <a href="course.php" class="nav-item nav-link">Courses</a>
                 <a href="blogs.php" class="nav-item nav-link">Blogs</a>
+                <a href="./gallery/gallery.php" class="nav-item nav-link">Gallery</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu m-0">
                         <a href="detail.php" class="dropdown-item active">Course Detail</a>
                         <a href="feature.php" class="dropdown-item">Our Features</a>
-                        <a href="team.php" class="dropdown-item">Instructors</a>
                         <a href="testimonial.php" class="dropdown-item">Testimonial</a>
                     </div>
                 </div>
